@@ -30,45 +30,44 @@ public class LambdaExercise {
 	}
 
 	public static void displayCountries() {
-		
-		countries.stream().forEach(s -> System.out.println(s));
-		
+
+		countries.forEach(s -> System.out.println(s));
+
 	}
 
 	public static void displayCountryCapitals() {
-		
-		countryCapitals.entrySet().stream().forEach(e -> System.out.println(e));
-		
+
+		countryCapitals.entrySet().forEach(e -> System.out.println(e));
+
 	}
 
 	public static void sortCountriesByName() {
-		
+
 		countries.sort((c1,c2) -> - c1.compareTo(c2));
 		countries.forEach(System.out::println);
-		
+
 	}
 
 	public static void sortCountriesByLength() {
-		
+
 		countries.sort((c1,c2) -> c1.length()>c2.length()? -1:c1.length()<c2.length()? 1:c1.compareTo(c2));
-		countries.stream().forEach(System.out::println);
-		
+		countries.forEach(System.out::println);
+
 	}
 
 	public static void removeCountry(String name) {
-		
+
 		countries.removeIf(s -> s.length()>6 && s.equalsIgnoreCase(name));
-		countries.stream().forEach(System.out::println);
-		
+		countries.forEach(System.out::println);
+
 	}
 
 	public static void main(String[] args) {
 		displayCountries(); 
-		displayCountryCapitals();
-		sortCountriesByName();
+		displayCountryCapitals(); 
+		sortCountriesByName(); 
 		sortCountriesByLength();
-		removeCountry("Pakistan");
-
+		removeCountry("Australia");
 	}
 
 }
