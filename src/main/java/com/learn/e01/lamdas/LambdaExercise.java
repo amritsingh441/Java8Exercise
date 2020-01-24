@@ -1,6 +1,7 @@
 package com.learn.e01.lamdas;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,20 +38,20 @@ public class LambdaExercise {
 
 	public static void displayCountryCapitals() {
 
-		countryCapitals.entrySet().forEach(e -> System.out.println(e));
+		countryCapitals.forEach((country,capital) -> System.out.println(country+" = "+capital));
 
 	}
 
 	public static void sortCountriesByName() {
 
-		countries.sort((c1,c2) -> - c1.compareTo(c2));
+		Collections.sort(countries,(c1,c2)->c2.compareTo(c1));
 		countries.forEach(System.out::println);
 
 	}
 
 	public static void sortCountriesByLength() {
-
-		countries.sort((c1,c2) -> c1.length()>c2.length()? -1:c1.length()<c2.length()? 1:c1.compareTo(c2));
+		
+		Collections.sort(countries,(c1,c2) -> c1.length()>c2.length()? -1:c1.length()<c2.length()? 1:c1.compareTo(c2));
 		countries.forEach(System.out::println);
 
 	}
