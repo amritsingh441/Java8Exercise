@@ -6,6 +6,7 @@ public class Tablet {
 	private String manufacturer;
 	private String manufactureDate;
 	private String expiryDate;
+	
 	public String getTabletName() {
 		return tabletName;
 	}

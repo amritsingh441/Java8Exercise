@@ -23,7 +23,6 @@ public class NIO2Exercise {
 		{
 			List<String []> records = fileData.map(input ->{String [] str = input.split(","); 
 			return str;}).collect(Collectors.toList());
-
 			Date date = new Date();
 			SimpleDateFormat formatter = new  SimpleDateFormat("dd/MM/yyyy");
 			String todayDate = formatter.format(date);
