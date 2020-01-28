@@ -101,7 +101,9 @@ public class NIO2Exercise {
 
 	public static void main(String[] args) {
 		
-		writeData("Amoxicilin,Mylan,12/07/1989,27/06/2020");
+		Tablet tablet = new Tablet("Amoxicilin","Mylan","12/07/1989","27/06/2020");
+		String data = tablet.getTabletName()+","+tablet.getManufacturer()+","+tablet.getManufactureDate()+","+tablet.getExpiryDate();
+		writeData(data);
 
 		getAllJavaFilesFromDirectory();
 		System.out.println("--------------------------");
