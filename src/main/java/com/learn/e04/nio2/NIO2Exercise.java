@@ -1,9 +1,11 @@
 package com.learn.e04.nio2;
 
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -26,14 +28,34 @@ public class NIO2Exercise {
 			SimpleDateFormat formatter = new  SimpleDateFormat("dd/MM/yyyy");
 			String todayDate = formatter.format(date);
 			//records.forEach(str -> System.out.println(str[0]+"\t"+str[1]+"\t"+str[2]+"\t"+str[3]));
-			Map<String,String> resMap =	records.stream().filter(str ->str[1].equalsIgnoreCase(manufacturer) && dateCompare(todayDate,str[3]))
+			Map<String,String> resMap =	records.stream()
+					.filter(str ->str[1].equalsIgnoreCase(manufacturer) && dateCompare(todayDate,str[3]))
 					.collect(Collectors.toMap(str -> str[0], str -> str[3]));
+			
 			return resMap;
+			
 		}catch(IOException ioe) {
 			System.out.println(ioe.getMessage());
 		}
 		return null;
 
+	}
+	
+	public static void writeData(String data) {
+		
+		try
+		{
+			Path path = Paths.get("src/data","input.txt");
+			BufferedWriter br = Files.newBufferedWriter(path, StandardOpenOption.APPEND);
+			br.newLine();
+			br.write(data);
+			br.close();
+			
+		}catch(IOException ioe) {
+			System.out.println(ioe.getMessage());
+			
+		}
+		
 	}
 	
 	public static boolean dateCompare(String todayDate,String expiryDate) {
@@ -78,6 +100,8 @@ public class NIO2Exercise {
 	}
 
 	public static void main(String[] args) {
+		
+		writeData("Amoxicilin,Mylan,12/07/1989,27/06/2020");
 
 		getAllJavaFilesFromDirectory();
 		System.out.println("--------------------------");
